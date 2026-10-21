@@ -31,6 +31,7 @@ This curated directory indexes the entire DAST ecosystem: enterprise SaaS vulner
 - [❓ Frequently Asked Questions (FAQ)](#-frequently-asked-questions-faq)
 - [🤝 How to Contribute](#-how-to-contribute)
 - [⚠️ Disclaimer](#️-disclaimer)
+- [⭐ Star History](#star-history)
 - [🏷️ Keywords & Search Taxonomy](#️-keywords--search-taxonomy)
 
 ---
@@ -208,6 +209,12 @@ Contributions are welcome! To propose additions or updates:
 ## ⚠️ Disclaimer
 
 This list is curated for educational, DevSecOps engineering, and defensive security auditing purposes. DAST tools must only be used against applications and APIs where you have explicit written authorization to perform security testing. Unauthorized testing against target infrastructure is strictly illegal.
+
+---
+
+##  Star History
+
+[![Star History Chart](https://star-history.dera.page/svg?repos=ishandutta2007/Awesome-Dynamic-Application-Security-Testing-DAST&type=date&legend=top-left)](https://star-history.dera.page/#ishandutta2007/Awesome-Dynamic-Application-Security-Testing-DAST&type=date&legend=top-left)
 
 ---
 
