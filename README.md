@@ -1,32 +1,70 @@
-# Awesome-Dynamic-Application-Security-Testing-DAST
+# Awesome Dynamic Application Security Testing (DAST) Tools & Ecosystem
 
-A curated list of Dynamic Application Security Testing (DAST) tools, runtime API vulnerability scanners, DevSecOps pipeline automation tools, and security testing frameworks.
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/ishandutta2007/Awesome-Dynamic-Application-Security-Testing-DAST/pulls)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ishandutta2007/Awesome-Dynamic-Application-Security-Testing-DAST)
 
-Dynamic Application Security Testing (DAST) tools test running web applications and APIs from an external attacker's perspective without requiring source code access. They detect critical vulnerabilities such as SQL injection, Cross-Site Scripting (XSS), Server-Side Request Forgery (SSRF), Broken Object Level Authorization (BOLA/IDOR), authentication bypasses, and security misconfigurations.
+> **Dynamic Application Security Testing (DAST)** is a black-box application security methodology that evaluates running web applications, microservices, and APIs from the exterior—simulating real-world cyberattacks without requiring internal source code access. 
+
+This curated directory indexes the entire DAST ecosystem: enterprise SaaS vulnerability management suites, developer-first CI/CD pipeline scanners, stateful REST/GraphQL API fuzzers, and community-driven open-source penetration testing engines.
 
 ---
 
 ## Table of Contents
 
+- [What is DAST?](#what-is-dast)
+- [DAST vs. SAST vs. IAST Comparison](#dast-vs-sast-vs-iast-comparison)
 - [Sector Overview & Market Dynamics](#sector-overview--market-dynamics)
-- [SaaS / Hosted Platforms](#saas--hosted-platforms)
+- [Commercial & SaaS DAST Platforms](#commercial--saas-dast-platforms)
 - [Open-Source GitHub Projects](#open-source-github-projects)
+- [DAST CI/CD Pipeline Automation](#dast-cicd-pipeline-automation)
+- [Vulnerability Coverage & OWASP Top 10](#vulnerability-coverage--owasp-top-10)
+- [Frequently Asked Questions (FAQ)](#frequently-asked-questions-faq)
 - [How to Contribute](#how-to-contribute)
 - [Disclaimer](#disclaimer)
+- [Keywords & Search Taxonomy](#keywords--search-taxonomy)
+
+---
+
+## What is DAST?
+
+**Dynamic Application Security Testing (DAST)** executes automated security assessments against running web applications, Single Page Applications (SPAs), and APIs (REST, GraphQL, gRPC, SOAP). 
+
+By analyzing HTTP requests and responses, injecting targeted test payloads, and observing runtime behavior, DAST scanners discover exploitable weaknesses such as:
+- **Injection Flaws:** SQL Injection (SQLi), Cross-Site Scripting (XSS), Command Injection, LDAP Injection
+- **Broken Access Control & Authorization:** Broken Object Level Authorization (BOLA / IDOR), privilege escalation
+- **Authentication Defects:** Weak session tokens, credential exposure, lack of rate limiting
+- **Server & Cloud Misconfigurations:** CORS misconfigurations, security header deficiencies, sensitive directory exposure
+- **Server-Side Request Forgery (SSRF) & Insecure Deserialization**
+
+---
+
+## DAST vs. SAST vs. IAST Comparison
+
+Understanding where DAST fits across the Application Security (AppSec) lifecycle:
+
+| Dimension | DAST (Dynamic Testing) | SAST (Static Testing) | IAST (Interactive Testing) |
+|---|---|---|---|
+| **Testing Approach** | Black-box (external simulation) | White-box (source code inspection) | Gray-box (instrumented runtime agent) |
+| **Execution State** | Requires a running application / endpoint | Runs against uncompiled code or binaries | Runs inside runtime container during tests |
+| **False Positive Rate** | Low to moderate (exploitable runtime proof) | Moderate to high (lacks runtime context) | Low (correlates code execution & payload) |
+| **Language Dependency** | None (protocol & HTTP agnostic) | Language and framework dependent | Language/runtime specific (Java, .NET, Node) |
+| **Detection Strengths** | Runtime configs, auth flows, API logic, WAF | Code-level bugs, hardcoded secrets, syntax | End-to-end execution path, line-of-code bugs |
 
 ---
 
 ## Sector Overview & Market Dynamics
 
-The global Dynamic Application Security Testing (DAST) market is estimated between **$3.5 billion and $3.8 billion in 2025**, projected to surpass **$4.5 billion by 2026** at a compound annual growth rate (CAGR) of ~16–22%, driven by the explosion of cloud-native APIs, microservice architectures, and compliance mandates.
+The global Dynamic Application Security Testing (DAST) market is estimated between **$3.5 billion and $3.8 billion in 2025**, projected to surpass **$4.5 billion by 2026** at a compound annual growth rate (CAGR) of ~16–22%, driven by the explosion of cloud-native APIs, microservice architectures, and compliance mandates (SOC 2, PCI-DSS, ISO 27001).
 
 The sector is **moderately fragmented** rather than concentrated or winner-take-all. Established AppSec giants (OpenText Fortify, Veracode, Black Duck, Checkmarx) serve large enterprise governance needs, while high-growth developer-first challengers (PortSwigger Burp Suite, Invicti, Rapid7, StackHawk, Intruder) dominate agile development workflows. Most modern security organizations rely on a multi-layered defense-in-depth model that combines commercial DAST automation with open-source scanners and manual penetration testing toolkits.
 
 ---
 
-## SaaS / Hosted Platforms
+## Commercial & SaaS DAST Platforms
 
-The following commercial DAST platforms are sorted in descending order by parent company size (valuation / annual revenue).
+The following enterprise and SaaS DAST platforms are sorted in descending order by company size (valuation / annual revenue).
 
 | Product | Company Size (Revenue / Valuation) | Starting Tier Pricing | Free Tier / Free Trial Limits | Key Capabilities & Architecture |
 |---|---|---|---|---|
@@ -75,6 +113,80 @@ Curated open-source DAST scanners, web crawlers, API fuzzers, and runtime vulner
 
 ---
 
+## DAST CI/CD Pipeline Automation
+
+Modern DevSecOps workflows embed DAST directly into pull request checks and staging deployment gates:
+
+```
++-------------------------------------------------------------------+
+|               Continuous Security Pipeline (DevSecOps)            |
++-------------------------------------------------------------------+
+|  1. Developer Commit & Push                                       |
+|  2. SAST & Secret Detection (Static Analysis)                     |
+|  3. Ephemeral Staging Environment Deployed                        |
+|  4. DAST Automated Scan Triggered (OWASP ZAP / Nuclei / Dastardly)|
+|  5. SARIF Report Generated & Exported to GitHub Security Tab      |
+|  6. Quality Gate: Block PR on High/Critical Severity Findings     |
++-------------------------------------------------------------------+
+```
+
+### GitHub Actions Integration Example
+
+Run an automated DAST baseline scan using the official OWASP ZAP Docker action:
+
+```yaml
+name: Dynamic Application Security Testing (DAST)
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
+
+jobs:
+  dast_scan:
+    runs-on: ubuntu-latest
+    name: Run ZAP Baseline DAST Scan
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.14.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
+          target: 'https://staging.example.com'
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a'
+```
+
+---
+
+## Vulnerability Coverage & OWASP Top 10
+
+DAST tools dynamically audit against the **OWASP Web Application Top 10** and **OWASP API Security Top 10**:
+
+- **A01:2021 - Broken Access Control:** Tested by comparing authenticated access levels across roles (IDOR/BOLA).
+- **A02:2021 - Cryptographic Failures:** Identified by inspecting SSL/TLS cipher suites and missing HSTS headers.
+- **A03:2021 - Injection:** Tested via dynamic payload injection for SQL, OS command, and template injection.
+- **A05:2021 - Security Misconfiguration:** Detected through default error messages, open admin portals, and exposed cloud metadata.
+- **A07:2021 - Identification & Authentication Failures:** Tested through credential stuffing, brute-forcing, and session timeout auditing.
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+### What makes DAST different from SAST?
+SAST scans source code before compilation, identifying potential insecure coding practices without executing the program. DAST interacts with running applications over HTTP, validating whether a flaw is actually exploitable in the runtime environment.
+
+### Can DAST tools test authenticated applications?
+Yes. Modern DAST solutions support recorded browser authentication macros, OAuth2/OIDC token generation, HTTP basic authentication, and custom bearer tokens to scan deep behind login pages.
+
+### How do I minimize false positives in DAST?
+Choose scanners featuring proof-based verification (like Invicti) or differential analysis (like Arachni). In automated CI/CD pipelines, configure calibrated rule exclusion files and run baseline passive scans before active fuzzing.
+
+---
+
 ## How to Contribute
 
 Contributions are welcome! To propose additions or updates:
@@ -88,3 +200,9 @@ Contributions are welcome! To propose additions or updates:
 ## Disclaimer
 
 This list is curated for educational, DevSecOps engineering, and defensive security auditing purposes. DAST tools must only be used against applications and APIs where you have explicit written authorization to perform security testing. Unauthorized testing against target infrastructure is strictly illegal.
+
+---
+
+## Keywords & Search Taxonomy
+
+`dynamic application security testing` • `DAST tools` • `web application vulnerability scanner` • `API security testing` • `REST API fuzzing` • `GraphQL security scanner` • `OWASP ZAP` • `Nuclei templates` • `Burp Suite` • `DevSecOps CI/CD security` • `black box security testing` • `runtime application security` • `automated penetration testing` • `BOLA IDOR vulnerability scanner` • `SQL injection scanner` • `XSS detection tool`
