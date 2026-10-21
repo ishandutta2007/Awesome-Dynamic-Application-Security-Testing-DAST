@@ -1,9 +1,15 @@
+<div align="center">
+
+![Awesome DAST - Dynamic Application Security Testing Ecosystem](assets/banner.svg)
+
 # Awesome Dynamic Application Security Testing (DAST) Tools & Ecosystem
 
 [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/ishandutta2007/Awesome-Dynamic-Application-Security-Testing-DAST/pulls)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ishandutta2007/Awesome-Dynamic-Application-Security-Testing-DAST)
+
+</div>
 
 > **Dynamic Application Security Testing (DAST)** is a black-box application security methodology that evaluates running web applications, microservices, and APIs from the exterior—simulating real-world cyberattacks without requiring internal source code access. 
 

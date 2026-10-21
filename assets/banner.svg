@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="auto">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e17" />
+      <stop offset="50%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#060911" />
+    </linearGradient>
+
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+
+    <linearGradient id="scanBeam" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Filters for Neon Glow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(56, 189, 248, 0.07)" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <style>
+    @keyframes scanMove {
+      0% { transform: translateX(-400px); }
+      100% { transform: translateX(1200px); }
+    }
+    @keyframes pulseOrb {
+      0%, 100% { transform: scale(1); opacity: 0.4; }
+      50% { transform: scale(1.15); opacity: 0.8; }
+    }
+    @keyframes radarRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes dashCycle {
+      to { stroke-dashoffset: -100; }
+    }
+    @keyframes beaconBlink {
+      0%, 100% { opacity: 0.3; r: 3; }
+      50% { opacity: 1; r: 6; }
+    }
+    .scanner-beam {
+      animation: scanMove 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    .orb-glow {
+      transform-origin: center;
+      animation: pulseOrb 6s ease-in-out infinite;
+    }
+    .radar-sweep {
+      transform-origin: 1040px 180px;
+      animation: radarRotate 12s linear infinite;
+    }
+    .flow-line {
+      stroke-dasharray: 8 12;
+      animation: dashCycle 4s linear infinite;
+    }
+    .beacon-1 { animation: beaconBlink 2.5s ease-in-out infinite; }
+    .beacon-2 { animation: beaconBlink 2.5s ease-in-out infinite 0.8s; }
+    .beacon-3 { animation: beaconBlink 2.5s ease-in-out infinite 1.6s; }
+  </style>
+
+  <!-- 1. Background Container -->
+  <rect width="1200" height="360" rx="16" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="2" />
+
+  <!-- 2. Cyber Matrix Grid Background -->
+  <rect width="1200" height="360" rx="16" fill="url(#gridPattern)" />
+
+  <!-- 3. Dynamic Background Ambient Glowing Orbs -->
+  <g class="orb-glow">
+    <circle cx="150" cy="180" r="140" fill="#38bdf8" opacity="0.08" filter="url(#glow)" />
+    <circle cx="1040" cy="180" r="130" fill="#818cf8" opacity="0.1" filter="url(#glow)" />
+    <circle cx="600" cy="60" r="100" fill="#c084fc" opacity="0.06" filter="url(#glow)" />
+  </g>
+
+  <!-- 4. Dynamic Scanning Beam (Behind text) -->
+  <rect class="scanner-beam" y="0" width="300" height="360" fill="url(#scanBeam)" opacity="0.6" />
+
+  <!-- 5. Decorative Radar / Target HUD on Right Side (Subtle & Dynamic) -->
+  <g opacity="0.45">
+    <circle cx="1040" cy="180" r="110" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 6" />
+    <circle cx="1040" cy="180" r="80" fill="none" stroke="#818cf8" stroke-width="1.2" />
+    <circle cx="1040" cy="180" r="45" fill="none" stroke="#38bdf8" stroke-width="1" stroke-dasharray="2 4" />
+    <circle cx="1040" cy="180" r="15" fill="none" stroke="#00f2fe" stroke-width="1.5" />
+    <!-- Radar crosshairs -->
+    <line x1="910" y1="180" x2="1170" y2="180" stroke="#38bdf8" stroke-width="1" opacity="0.3" />
+    <line x1="1040" y1="50" x2="1040" y2="310" stroke="#38bdf8" stroke-width="1" opacity="0.3" />
+    <!-- Dynamic Rotating Sweep -->
+    <path class="radar-sweep" d="M 1040 180 L 1150 180 A 110 110 0 0 0 1040 70 Z" fill="url(#accentGrad)" opacity="0.2" />
+    <!-- Target blips -->
+    <circle class="beacon-1" cx="1080" cy="140" r="4" fill="#00ff87" filter="url(#subtleGlow)" />
+    <circle class="beacon-2" cx="1010" cy="225" r="4" fill="#38bdf8" filter="url(#subtleGlow)" />
+    <circle class="beacon-3" cx="1115" cy="210" r="4" fill="#c084fc" filter="url(#subtleGlow)" />
+  </g>
+
+  <!-- 6. Dynamic Connecting Data Stream Lines -->
+  <path class="flow-line" d="M 70 300 Q 300 320 600 305 T 1130 300" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.3" />
+  <path class="flow-line" d="M 70 60 Q 400 40 750 65 T 1130 55" fill="none" stroke="#818cf8" stroke-width="1.5" opacity="0.25" />
+
+  <!-- 7. FOREGROUND CONTENT (Protected from all dynamic elements) -->
+  <g transform="translate(70, 0)">
+    
+    <!-- Top Pill / Badge -->
+    <g transform="translate(0, 50)">
+      <rect width="210" height="30" rx="15" fill="#1e293b" stroke="#38bdf8" stroke-width="1" opacity="0.9" />
+      <circle cx="16" cy="15" r="5" fill="#00ff87" filter="url(#subtleGlow)" />
+      <text x="32" y="20" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1">CURATED APPSEC REPO</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="0" y="145" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="52" font-weight="800" letter-spacing="-1">
+      <tspan fill="#ffffff">Awesome </tspan>
+      <tspan fill="url(#primaryGrad)" filter="url(#subtleGlow)">DAST</tspan>
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="190" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="500">
+      Dynamic Application Security Testing &amp; Vulnerability Scanning
+    </text>
+
+    <!-- Description Paragraph -->
+    <text x="0" y="222" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" font-weight="400">
+      The authoritative ecosystem guide to enterprise SaaS platforms &amp; open-source security scanners.
+    </text>
+
+    <!-- Interactive / Feature Badges in Foreground -->
+    <g transform="translate(0, 260)">
+      <!-- Badge 1: Web App Security -->
+      <g transform="translate(0, 0)">
+        <rect width="130" height="34" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="65" y="21" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">🛡️ Web Security</text>
+      </g>
+      <!-- Badge 2: API DAST -->
+      <g transform="translate(142, 0)">
+        <rect width="120" height="34" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="60" y="21" fill="#818cf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">⚡ API Fuzzing</text>
+      </g>
+      <!-- Badge 3: DevSecOps CI/CD -->
+      <g transform="translate(274, 0)">
+        <rect width="140" height="34" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="70" y="21" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">🔄 DevSecOps CI/CD</text>
+      </g>
+      <!-- Badge 4: OWASP Top 10 -->
+      <g transform="translate(426, 0)">
+        <rect width="145" height="34" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="72" y="21" fill="#00ff87" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">🎯 OWASP Top 10</text>
+      </g>
+      <!-- Badge 5: Runtime Auditing -->
+      <g transform="translate(583, 0)">
+        <rect width="150" height="34" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="75" y="21" fill="#f43f5e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">🔍 Runtime Auditing</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- 8. Subtle Outer Border Glow -->
+  <rect width="1200" height="360" rx="16" fill="none" stroke="url(#primaryGrad)" stroke-width="1" opacity="0.4" />
+</svg>
