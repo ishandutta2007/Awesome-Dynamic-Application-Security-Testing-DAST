@@ -5,7 +5,7 @@
 # 🛡️ Awesome Dynamic Application Security Testing (DAST) Tools & Ecosystem
 
 <a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a><a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![Awesome](https://awesome.re/badge.svg)](https://github.com/ishandutta2007/Awesome-Awesome-Awesome)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/ishandutta2007/Awesome-Dynamic-Application-Security-Testing-DAST/pulls)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/ishandutta2007/Awesome-Dynamic-Application-Security-Testing-DAST)
@@ -31,6 +31,7 @@ This curated directory indexes the entire DAST ecosystem: enterprise SaaS vulner
 - [❓ Frequently Asked Questions (FAQ)](#-frequently-asked-questions-faq)
 - [🤝 How to Contribute](#-how-to-contribute)
 - [⚠️ Disclaimer](#️-disclaimer)
+- [💖 Support](#-support)
 - [⭐ Star History](#star-history)
 - [🏷️ Keywords & Search Taxonomy](#️-keywords--search-taxonomy)
 
@@ -209,6 +210,25 @@ Contributions are welcome! To propose additions or updates:
 ## ⚠️ Disclaimer
 
 This list is curated for educational, DevSecOps engineering, and defensive security auditing purposes. DAST tools must only be used against applications and APIs where you have explicit written authorization to perform security testing. Unauthorized testing against target infrastructure is strictly illegal.
+
+---
+
+## 💖 Support
+
+A huge **thank you** to all developers, security researchers, penetration testers, and DevSecOps practitioners who support and use this ecosystem! 🎉
+
+If you find this repository helpful for your application security auditing, runtime API testing, or DevSecOps automation, please consider supporting the project:
+
+- ⭐ **Star the repo:** Show your appreciation and help fellow security engineers find this resource.
+- 🍴 **Fork & Contribute:** Submit new DAST scanners, fix broken links, or improve scanning guides.
+- 📢 **Share with the community:** Spread the word across your team, Discord, LinkedIn, and Twitter/X.
+- ☕ **Buy a coffee & Sponsor:** Back ongoing maintenance, research, and curation through the [GitHub Sponsor Dashboard](https://github.com/sponsors/ishandutta2007).
+
+<p align="center">
+  <a href="https://github.com/sponsors/ishandutta2007">
+    <img src="https://img.shields.io/badge/Sponsor-%E2%9D%A4-pink?style=for-the-badge&logo=github-sponsors" alt="Sponsor on GitHub" />
+  </a>
+</p>
 
 ---
 
