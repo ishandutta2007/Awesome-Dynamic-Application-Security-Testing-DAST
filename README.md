@@ -8,10 +8,19 @@ Dynamic Application Security Testing (DAST) tools test running web applications 
 
 ## Table of Contents
 
+- [Sector Overview & Market Dynamics](#sector-overview--market-dynamics)
 - [SaaS / Hosted Platforms](#saas--hosted-platforms)
 - [Open-Source GitHub Projects](#open-source-github-projects)
 - [How to Contribute](#how-to-contribute)
 - [Disclaimer](#disclaimer)
+
+---
+
+## Sector Overview & Market Dynamics
+
+The global Dynamic Application Security Testing (DAST) market is estimated between **$3.5 billion and $3.8 billion in 2025**, projected to surpass **$4.5 billion by 2026** at a compound annual growth rate (CAGR) of ~16–22%, driven by the explosion of cloud-native APIs, microservice architectures, and compliance mandates.
+
+The sector is **moderately fragmented** rather than concentrated or winner-take-all. Established AppSec giants (OpenText Fortify, Veracode, Black Duck, Checkmarx) serve large enterprise governance needs, while high-growth developer-first challengers (PortSwigger Burp Suite, Invicti, Rapid7, StackHawk, Intruder) dominate agile development workflows. Most modern security organizations rely on a multi-layered defense-in-depth model that combines commercial DAST automation with open-source scanners and manual penetration testing toolkits.
 
 ---
 
